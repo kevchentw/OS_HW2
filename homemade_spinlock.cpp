@@ -1,6 +1,6 @@
 #include <iostream>
 #include <pthread.h>
-
+#define T 16 
 void homemade_spin_lock(int *spinlock_addr) {
     asm(
     "spin_lock: \n\t"
@@ -51,13 +51,13 @@ void* ThreadRunner(void *){
 }
 
 int main() {
-    pthread_t tid[3];
+    pthread_t tid[T];
     s=0;
-    for (int i = 0; i < 3;i++) {
+    for (int i = 0; i < T;i++) {
         pthread_create(&tid[i], NULL, ThreadRunner, 0);
     }
 
-    for (int i =  0; i < 3; i++){
+    for (int i =  0; i < T; i++){
         pthread_join(tid[i], NULL);
     }
     x.Print();

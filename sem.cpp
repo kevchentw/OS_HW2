@@ -1,7 +1,7 @@
 #include <iostream>
 #include <pthread.h>
 #include <semaphore.h>
-
+#define T 16 
 
 using namespace std;
 
@@ -34,14 +34,14 @@ void* ThreadRunner(void *){
 }
 
 int main() {
-    pthread_t tid[3];
+    pthread_t tid[T];
     sem_init(&s_mutex, 0, 1);
 
-    for (int i = 0; i < 3;i++) {
+    for (int i = 0; i < T;i++) {
         pthread_create(&tid[i], NULL, ThreadRunner, 0);
     }
 
-    for (int i =  0; i < 3; i++){
+    for (int i =  0; i < T; i++){
         pthread_join(tid[i], NULL);
     }
     sem_destroy(&s_mutex);
