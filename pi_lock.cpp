@@ -37,7 +37,7 @@ public:
 Counter x;
 
 void* ThreadRunner(void *){
-    for(int j=0; j<10000; j++){
+    for(int j=0; j<100000000; j++){
         pthread_mutex_lock(&p_mutex);
         x.Pick();
         pthread_mutex_unlock(&p_mutex);
