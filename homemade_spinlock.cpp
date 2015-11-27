@@ -52,7 +52,7 @@ void* ThreadRunner(void *){
 
 int main() {
     pthread_t tid[3];
-    homemade_spin_init(&s);
+    s=0;
     for (int i = 0; i < 3;i++) {
         pthread_create(&tid[i], NULL, ThreadRunner, 0);
     }

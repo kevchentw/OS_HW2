@@ -1,6 +1,6 @@
 #include <iostream>
 #include <pthread.h>
-
+using namespace std;
 class Counter{
 private:
     int value;
@@ -23,7 +23,7 @@ pthread_spinlock_t lock;
 
 
 void* ThreadRunner(void *){
-    for (int k = 0; k < 100000000; k++) {
+    for (int k = 0; k < 1000; k++) {
         pthread_spin_lock(&lock);
         x.Increment();
         pthread_spin_unlock(&lock);
